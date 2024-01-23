@@ -13,7 +13,7 @@ app.use("/data", dataRoutes);
 const start = async () => {
   try {
     await connectDB(
-      "mongodb+srv://kshitij:1234@nodeexpressprojects.va1zekv.mongodb.net/hodlinfo?retryWrites=true&w=majority"
+      "mongodb+srv://user:password@nodeexpressprojects.va1zekv.mongodb.net/hodlinfo?retryWrites=true&w=majority"
     );
     await fetchData();
     app.listen(port, () => {
