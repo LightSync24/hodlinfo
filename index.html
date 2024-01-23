@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Hodlinfo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+<!--     <script>
+      const func = async () => {
+        let res;
+        try {
+          res = await axios.get('http://localhost:3000/data');
+          if (Array.isArray(res.data.dt)) {
+            res.data.dt.forEach((item, index) => {
+              let itemCopy = { ...item };
+              delete itemCopy._id;
+              delete itemCopy.__v;
+              let itemValues = Object.values(itemCopy).join(', ');
+              let splitValues = itemValues.split(',');
+              let formattedValues = splitValues.map(value => value.trim()).join(' ');
+              document.getElementsByClassName('displayData')[index].innerText = formattedValues;
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      func();
+    </script> -->
+    <script>
+      const func = async () => {
+        let res;
+        try {
+          res = await axios.get('http://localhost:3000/data');
+          if (Array.isArray(res.data.dt)) {
+            res.data.dt.forEach((item, index) => {
+              let itemCopy = { ...item };
+              delete itemCopy._id;
+              delete itemCopy.__v;
+              let itemValues = Object.values(itemCopy).join(', ');
+              let splitValues = itemValues.split(',');
+              let formattedValues = splitValues.map(value => value.trim()).join(' ');
+              var text = document.getElementsByClassName('displayData')[index];
+              text.innerText = formattedValues;
+              text.classList.add('dd');
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      func();
+    </script>
+  </head>
+  <hr>
+    <div class="navbar">
+      <div style="flex: 1">
+        <img src="https://hodlinfo.com/static/media/HODLINFO.8f78fc06.png" />
+      </div>
+      <div style="display: flex; flex: 1; gap: 20px; justify-content: center">
+        <select name="curr" id="curr" class="btn">
+          <option value="INR" selected>INR</option>
+        </select>
+        <select class="btn">
+          <option value="BTC" selected>BTC</option>
+          <option value="ETH">ETH</option>
+          <option value="USDT">USDT</option>
+          <option value="XRP">XRP</option>
+          <option value="TRX">TRX</option>
+          <option value="DASH">DASH</option>
+        </select>
+        <button class="btn">Buy BTC</button>
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex: 1;
+        "
+      >
+        <div style="margin-right: 10px">
+          <div class="timer">
+            <div class="timer2">
+              <p style="color: #3dc6c1">60</p>
+            </div>
+          </div>
+        </div>
+        <button class="telegram">Connect Telegram</button>
+        <div>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="priceToTrade">Best Price to Trade</div>
+
+    <div
+      id="percentages"
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 40px;
+        margin-left: 40px;
+      "
+    >
+      <div style="display: flex; flex-direction: column">
+        <p class="percentage">0.1%</p>
+        <p class="timeDuration">5 mins</p>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <p class="percentage">0.96%</p>
+        <p class="timeDuration">1 Hour</p>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <p style="margin: auto; font-weight: 400; font-size: 80px">
+          &#8377;26,56,110
+        </p>
+        <p style="opacity: 0.45; font-weight: 300; font-size: 18px; margin-bottom: 20px;">
+          Average BTC/INR net price including commision
+        </p>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <p class="percentage">2.73%</p>
+        <p class="timeDuration">1 day</p>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <p class="percentage">7.51%</p>
+        <p class="timeDuration">7 days</p>
+      </div>
+    </div>
+
+    <div id="displayData">
+      <ul id="topColumn">
+        <li>Base</li>
+        <li>Buy</li>
+        <li>Last</li>
+        <li>Name</li>
+        <li>Sell</li>
+        <li>Volume</li>
+      </ul>
+      <ul>
+        <li class="displayData dd"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+        <li class="displayData"></li>
+      </ul>
+    </div>
+    <hr style="margin-top: 10px; opacity: 0.45;"></hr>
+    <div class="end">
+      <div>
+        <p style="opacity: 0.45;">Copyright &#169; 2024 Hodlinfo.com</p>
+      </div>
+      <div style="opacity: 0.45;">
+        Support
+      </div>
+    </div>
+    <hr></hr>
+    <footer>
+      <p>Add Hodlinfo to home screen</p>
+    </footer>
+  </body>
+</html>
